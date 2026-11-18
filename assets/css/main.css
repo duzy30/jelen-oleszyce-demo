@@ -1437,10 +1437,10 @@ a.wp-block-button__link {
 		width: 100%;
 	}
 
-	/* ----- Tiles: oryginalny cover (zdjęcie + tekst na overlay), jeden pod drugim ----- */
+	/* ----- Tiles: zdjęcie po lewej + panel tekstowy po prawej (jak na iPhonie) ----- */
 	.jelen-tiles {
-		padding-top: 1rem !important;
-		padding-bottom: 1rem !important;
+		padding-top: 0.85rem !important;
+		padding-bottom: 0.85rem !important;
 		padding-left: 1rem !important;
 		padding-right: 1rem !important;
 	}
@@ -1453,7 +1453,7 @@ a.wp-block-button__link {
 	.jelen-tiles__grid {
 		flex-direction: column !important;
 		flex-wrap: nowrap !important;
-		gap: 0.75rem !important;
+		gap: 0.55rem !important;
 	}
 
 	.jelen-tiles__grid > .wp-block-column {
@@ -1463,15 +1463,78 @@ a.wp-block-button__link {
 	}
 
 	.jelen-card.wp-block-cover {
-		min-height: 210px !important;
-		height: auto !important;
+		display: flex !important;
+		flex-direction: row !important;
+		align-items: stretch !important;
+		min-height: 7.1rem !important;
+		height: 7.1rem !important;
+		padding: 0 !important;
 		border-radius: 10px !important;
+		overflow: hidden;
+		aspect-ratio: auto !important;
 	}
 
-	.jelen-card .wp-block-heading,
-	.jelen-card .wp-block-paragraph:not(.jelen-card__arrow) {
+	.jelen-card .wp-block-cover__background {
+		display: none !important;
+	}
+
+	.jelen-card .wp-block-cover__image-background {
+		position: relative !important;
+		inset: auto !important;
+		flex: 0 0 46% !important;
+		width: 46% !important;
+		height: 100% !important;
+		max-height: none !important;
+		object-fit: cover !important;
+		object-position: center !important;
+		margin: 0 !important;
+	}
+
+	.jelen-card .wp-block-cover__inner-container {
+		position: relative !important;
+		flex: 1 1 auto !important;
+		min-width: 0 !important;
+		width: auto !important;
+		height: 100% !important;
+		display: flex !important;
+		flex-direction: column !important;
+		justify-content: center !important;
+		align-items: flex-start !important;
+		padding: 0.7rem 0.85rem 0.7rem 0.95rem !important;
+		margin: 0 !important;
+		background: linear-gradient(180deg, #243028 0%, var(--jelen-forest) 100%) !important;
+		box-sizing: border-box;
+	}
+
+	.jelen-card .wp-block-heading {
+		margin: 0 0 0.2rem !important;
+		font-size: 1.05rem !important;
+		line-height: 1.2 !important;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 100%;
 		word-break: normal !important;
-		overflow-wrap: break-word;
+	}
+
+	.jelen-card .wp-block-paragraph:not(.jelen-card__arrow) {
+		margin: 0 !important;
+		font-size: 0.78rem !important;
+		line-height: 1.3 !important;
+		opacity: 0.9;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		word-break: normal !important;
+		padding-right: 1.1rem;
+	}
+
+	.jelen-card__arrow {
+		position: absolute !important;
+		right: 0.7rem;
+		bottom: 0.4rem;
+		margin: 0 !important;
 	}
 
 	.jelen-stat-item {
