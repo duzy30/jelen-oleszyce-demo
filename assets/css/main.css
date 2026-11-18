@@ -609,7 +609,7 @@ body.front-page .jelen-hero.wp-block-cover.is-position-center-left {
 	.jelen-hero-stats {
 		position: relative;
 		width: 100%;
-		max-width: 240px;
+		max-width: min(100%, 22rem);
 		margin-top: 1.15rem;
 		right: auto;
 		bottom: auto;
@@ -617,6 +617,11 @@ body.front-page .jelen-hero.wp-block-cover.is-position-center-left {
 
 	.jelen-hero__layout {
 		min-height: 0;
+	}
+
+	.jelen-hero__content {
+		max-width: 100% !important;
+		width: 100% !important;
 	}
 }
 
@@ -1080,6 +1085,20 @@ body.front-page .jelen-hero.wp-block-cover.is-position-center-left {
 	margin-bottom: 0.85rem;
 }
 
+/* ========== BUTTONS: no letter-by-letter wrapping ========== */
+.wp-block-button__link,
+.wp-element-button {
+	word-break: normal !important;
+	overflow-wrap: normal !important;
+	hyphens: none !important;
+}
+
+.jelen-hero .wp-block-button,
+.jelen-header__cta .wp-block-button {
+	flex-shrink: 0;
+	min-width: min(100%, 11rem);
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1100px) {
 	.jelen-stats-bar__inner {
@@ -1103,6 +1122,7 @@ body.front-page .jelen-hero.wp-block-cover.is-position-center-left {
 
 	.jelen-tiles__grid > .wp-block-column {
 		flex: 1 1 calc(50% - 0.5rem) !important;
+		min-width: min(100%, 16rem) !important;
 	}
 }
 
@@ -1114,6 +1134,25 @@ body.front-page .jelen-hero.wp-block-cover.is-position-center-left {
 	.jelen-news__query .wp-block-post-template.is-layout-grid {
 		grid-template-columns: 1fr 1fr !important;
 	}
+
+	/* Hero: full-width text column (was calc(100% - 14rem) → ~134px on phones) */
+	.jelen-hero__content {
+		max-width: 100% !important;
+		width: 100% !important;
+		padding-top: 0.35rem;
+	}
+
+	.jelen-hero__content.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+		max-width: 100% !important;
+	}
+
+	.jelen-hero .wp-block-cover__image-background {
+		object-position: 72% 32% !important;
+	}
+
+	.jelen-hero-stats {
+		max-width: 100%;
+	}
 }
 
 @media (max-width: 781px) {
@@ -1123,43 +1162,255 @@ body.front-page .jelen-hero.wp-block-cover.is-position-center-left {
 		background: var(--jelen-forest);
 	}
 
+	.jelen-header {
+		padding-left: 0.85rem !important;
+		padding-right: 0.85rem !important;
+	}
+
+	.jelen-header__inner {
+		min-height: 3.4rem;
+		height: auto;
+		gap: 0.45rem;
+		align-items: center !important;
+	}
+
+	.jelen-brand {
+		flex: 1 1 auto !important;
+		flex-shrink: 1 !important;
+		min-width: 0 !important;
+		gap: 0.45rem !important;
+		max-width: calc(100% - 8.75rem);
+	}
+
 	.jelen-brand__founded {
 		display: none;
 	}
 
 	.jelen-brand__logo img,
 	.jelen-brand .custom-logo {
-		width: 48px;
-		height: 48px;
+		width: 40px;
+		height: 40px;
 	}
 
-	.jelen-header__inner {
-		min-height: 3.75rem;
+	.jelen-brand__title {
+		font-size: 0.78rem !important;
+		min-width: 0;
 	}
 
-	.jelen-tiles__grid > .wp-block-column {
-		flex: 1 1 100% !important;
+	.jelen-brand__title a {
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		line-height: 1.2 !important;
+		white-space: normal;
 	}
 
+	.jelen-header__nav {
+		flex: 0 0 auto !important;
+		gap: 0.4rem !important;
+		min-width: 0;
+	}
+
+	.jelen-nav.wp-block-navigation {
+		flex-shrink: 0;
+	}
+
+	.jelen-nav .wp-block-navigation__responsive-container-open {
+		padding: 0.35rem !important;
+		min-width: 2.25rem;
+		justify-content: center;
+	}
+
+	.jelen-header__cta {
+		flex-shrink: 0 !important;
+	}
+
+	.jelen-btn-members .wp-block-button__link {
+		font-size: 0.68rem !important;
+		padding: 0.38rem 0.55rem !important;
+		white-space: nowrap !important;
+		word-break: normal !important;
+		gap: 0.3rem;
+		max-width: none;
+	}
+
+	.jelen-btn-members .wp-block-button__link::before {
+		width: 0.78em;
+		height: 0.78em;
+	}
+
+	/* Hero */
 	.jelen-hero.wp-block-cover {
-		min-height: 360px !important;
-		padding-top: 1.5rem !important;
+		min-height: 0 !important;
+		padding-top: 1.15rem !important;
+		padding-bottom: 1.25rem !important;
+		padding-left: 0.85rem !important;
+		padding-right: 0.85rem !important;
 	}
 
-	/* Header nie jest absolute — bez dodatkowego offsetu pod menu */
 	.jelen-hero__layout {
 		padding-top: 0;
 	}
 
-	.jelen-hero .wp-block-buttons {
-		flex-direction: column;
-		align-items: stretch;
+	.jelen-hero__content {
+		max-width: 100% !important;
+		width: 100% !important;
 	}
 
-	.jelen-hero .wp-block-button,
+	.jelen-hero__content > p:first-child {
+		letter-spacing: 0.08em !important;
+		font-size: 0.68rem !important;
+		line-height: 1.45 !important;
+		white-space: normal;
+		word-break: normal !important;
+	}
+
+	.jelen-hero h1.wp-block-heading {
+		font-size: clamp(1.55rem, 7vw, 2rem) !important;
+		line-height: 1.18 !important;
+		max-width: 100%;
+		margin-bottom: 0.65rem !important;
+	}
+
+	.jelen-hero__content > p.has-cream-color {
+		font-size: 0.9rem !important;
+		line-height: 1.5 !important;
+		max-width: 36em;
+	}
+
+	.jelen-hero .wp-block-buttons {
+		flex-direction: column !important;
+		align-items: stretch !important;
+		width: 100% !important;
+		gap: 0.55rem !important;
+	}
+
+	.jelen-hero .wp-block-button {
+		width: 100% !important;
+		min-width: 0 !important;
+		flex: 1 1 auto !important;
+	}
+
 	.jelen-hero .wp-block-button__link {
-		width: 100%;
+		width: 100% !important;
+		min-width: 0 !important;
+		display: flex !important;
+		align-items: center;
+		justify-content: center;
 		text-align: center;
+		white-space: normal !important;
+		word-break: normal !important;
+		overflow-wrap: normal !important;
+		line-height: 1.3 !important;
+		padding: 0.7rem 1rem !important;
+		box-sizing: border-box;
+	}
+
+	.jelen-hero-stats {
+		width: 100% !important;
+		max-width: 100% !important;
+		margin-top: 1rem;
+	}
+
+	.jelen-hero-stats__panel {
+		height: 96px;
+		width: 100%;
+	}
+
+	.jelen-hero-stats__slide {
+		width: 100%;
+	}
+
+	/* Tiles: horizontal photo + text panel (Ryś-inspired, Jeleń look) */
+	.jelen-tiles {
+		padding-top: 0.85rem !important;
+		padding-bottom: 0.85rem !important;
+	}
+
+	.jelen-tiles__grid {
+		flex-direction: column !important;
+		flex-wrap: nowrap !important;
+		gap: 0.55rem !important;
+	}
+
+	.jelen-tiles__grid > .wp-block-column {
+		flex: 1 1 auto !important;
+		width: 100% !important;
+		min-width: 0 !important;
+	}
+
+	.jelen-card.wp-block-cover {
+		display: flex !important;
+		flex-direction: row !important;
+		align-items: stretch !important;
+		min-height: 7.35rem !important;
+		height: 7.35rem !important;
+		padding: 0 !important;
+		border-radius: 10px !important;
+		overflow: hidden;
+		aspect-ratio: auto !important;
+	}
+
+	.jelen-card .wp-block-cover__background {
+		display: none !important;
+	}
+
+	.jelen-card .wp-block-cover__image-background {
+		position: relative !important;
+		inset: auto !important;
+		flex: 0 0 42% !important;
+		width: 42% !important;
+		height: 100% !important;
+		max-height: none !important;
+		object-fit: cover !important;
+		margin: 0 !important;
+	}
+
+	.jelen-card .wp-block-cover__inner-container {
+		position: relative !important;
+		flex: 1 1 auto !important;
+		min-width: 0 !important;
+		width: auto !important;
+		height: 100% !important;
+		display: flex !important;
+		flex-direction: column !important;
+		justify-content: center !important;
+		align-items: flex-start !important;
+		padding: 0.7rem 0.9rem 0.7rem 1rem !important;
+		margin: 0 !important;
+		background: linear-gradient(180deg, #243028 0%, var(--jelen-forest) 100%) !important;
+		box-sizing: border-box;
+	}
+
+	.jelen-card .wp-block-heading {
+		margin: 0 0 0.2rem !important;
+		font-size: 1.05rem !important;
+		line-height: 1.2 !important;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 100%;
+		word-break: normal !important;
+	}
+
+	.jelen-card .wp-block-paragraph:not(.jelen-card__arrow) {
+		margin: 0 !important;
+		font-size: 0.78rem !important;
+		line-height: 1.3 !important;
+		opacity: 0.9;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		word-break: normal !important;
+	}
+
+	.jelen-card__arrow {
+		position: absolute !important;
+		right: 0.75rem;
+		bottom: 0.45rem;
+		margin: 0 !important;
 	}
 
 	.jelen-stat-item {
@@ -1170,12 +1421,66 @@ body.front-page .jelen-hero.wp-block-cover.is-position-center-left {
 		grid-template-columns: 1fr !important;
 	}
 
+	.jelen-news-card .wp-block-post-title {
+		word-break: normal !important;
+		overflow-wrap: break-word;
+	}
+
 	.jelen-calendar {
 		position: static;
+		margin-top: 1.25rem;
+	}
+
+	.jelen-calendar__item {
+		gap: 0.7rem;
 	}
 
 	.jelen-gallery__grid.wp-block-gallery.has-nested-images {
 		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+	}
+
+	.jelen-footer .wp-block-columns {
+		gap: 1.25rem !important;
+	}
+}
+
+@media (max-width: 430px) {
+	.jelen-brand {
+		max-width: calc(100% - 8.25rem);
+	}
+
+	.jelen-brand__title {
+		font-size: 0.72rem !important;
+	}
+
+	.jelen-btn-members .wp-block-button__link {
+		font-size: 0.64rem !important;
+		padding: 0.34rem 0.48rem !important;
+	}
+
+	.jelen-hero h1.wp-block-heading {
+		font-size: clamp(1.45rem, 7.2vw, 1.85rem) !important;
+	}
+
+	.jelen-card.wp-block-cover {
+		min-height: 6.85rem !important;
+		height: 6.85rem !important;
+	}
+
+	.jelen-card .wp-block-cover__image-background {
+		flex-basis: 38% !important;
+		width: 38% !important;
+	}
+}
+
+@media (max-width: 390px) {
+	.jelen-brand__title a {
+		/* Prefer readable 2-line club name next to logo */
+		font-size: inherit;
+	}
+
+	.jelen-header__inner {
+		gap: 0.35rem;
 	}
 }
 
