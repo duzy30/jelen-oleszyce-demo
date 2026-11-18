@@ -1481,8 +1481,8 @@ a.wp-block-button__link {
 	.jelen-card .wp-block-cover__image-background {
 		position: relative !important;
 		inset: auto !important;
-		flex: 0 0 46% !important;
-		width: 46% !important;
+		flex: 0 0 33% !important;
+		width: 33% !important;
 		height: 100% !important;
 		max-height: none !important;
 		object-fit: cover !important;
