@@ -1466,8 +1466,8 @@ a.wp-block-button__link {
 		display: flex !important;
 		flex-direction: row !important;
 		align-items: stretch !important;
-		min-height: 7.1rem !important;
-		height: 7.1rem !important;
+		min-height: 5.7rem !important;
+		height: 5.7rem !important;
 		padding: 0 !important;
 		border-radius: 10px !important;
 		overflow: hidden;
