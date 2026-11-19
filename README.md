@@ -52,6 +52,21 @@ Nie jest wymagany build ani zmienne środowiskowe.
 - Fonty: Google Fonts (HTTPS) — Source Sans 3 + Source Serif 4
 - Działają: hero, menu (w tym mobilne), karuzela statystyk, aktualności, kalendarz, galeria, stopka
 
+## Vercel Web Analytics
+
+Strona DEMO jest statycznym HTML (Framework: Other). Integracja używa oficjalnego skryptu HTML:
+
+```html
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+```
+
+**Wymagane w panelu Vercel:** Project → **Analytics** → **Enable**.
+
+Po włączeniu i kolejnym wdrożeniu odsłony pojawiają się w zakładce Analytics. Lokalnie (`python3 -m http.server`) skrypt `/_vercel/insights/script.js` nie działa — to normalne.
+
 ## Bezpieczeństwo
 
 Repozytorium zawiera wyłącznie pliki statyczne DEMO.  
